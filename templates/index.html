@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="hi" class="scroll-smooth" id="htmlRoot">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Express Logistics & Cold Chain Solutions | Sitamarhi, Bihar</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts (Inter) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            600: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                            950: '#0f172a',
+                        },
+                        whatsapp: '#25D366'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased selection:bg-blue-600 selection:text-white">
+
+<!-- Top Info Bar -->
+<div class="bg-brand-950 text-gray-300 text-xs py-2 px-4 border-b border-blue-900/50">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+        <div class="flex items-center gap-4">
+            <span><i class="fas fa-map-marker-alt text-yellow-400 mr-1.5"></i> <span data-i18n="top_location">सीतामढ़ी, बिहार (इंडो-नेपाल बॉर्डर ट्रेड हब)</span></span>
+            <span class="hidden md:inline"><i class="fas fa-clock text-yellow-400 mr-1.5"></i> <span data-i18n="top_support">24x7 सर्विस सपोर्ट</span></span>
+        </div>
+        <div class="flex items-center gap-4 font-medium">
+            <a href="tel:+919465595811" class="hover:text-yellow-400 transition"><i class="fas fa-phone mr-1"></i> +91 9465595811</a>
+            <a href="mailto:info@expresslogistics.com" class="hover:text-yellow-400 transition hidden sm:inline"><i class="fas fa-envelope mr-1"></i> info@expresslogistics.com</a>
+        </div>
+    </div>
+</div>
+
+<!-- Sticky Navigation Bar -->
+<nav class="bg-white/90 backdrop-blur-md text-gray-800 shadow-sm sticky top-0 z-50 border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex justify-between items-center">
+
+        <!-- Brand Logo -->
+        <a href="#home" class="flex items-center gap-3 group">
+            <div class="w-10 h-10 bg-brand-900 rounded-xl flex items-center justify-center text-yellow-400 text-xl font-black shadow-lg shadow-blue-900/20 group-hover:scale-105 transition">
+                <i class="fas fa-truck-fast"></i>
+            </div>
+            <div>
+                <span class="text-xl font-extrabold tracking-tight text-brand-950 block leading-none">Express<span class="text-blue-600">Logistics</span></span>
+                <span class="text-[10px] font-semibold text-gray-500 uppercase tracking-widest block mt-0.5" data-i18n="brand_subtitle">& Cold Chain Hub</span>
+            </div>
+        </a>
+
+        <!-- Desktop Nav Links -->
+        <div class="hidden lg:flex items-center space-x-8 text-sm font-semibold text-gray-700">
+            <a href="#home" class="hover:text-blue-600 transition" data-i18n="nav_home">होम</a>
+            <a href="#services" class="hover:text-blue-600 transition" data-i18n="nav_services">सेवाएं</a>
+            <a href="#estimator" class="hover:text-blue-600 transition" data-i18n="nav_estimator">रेट कैलकुलेटर</a>
+            <a href="#warehousing" class="hover:text-blue-600 transition" data-i18n="nav_storage">कोल्ड स्टोरेज</a>
+            <a href="#contact" class="hover:text-blue-600 transition" data-i18n="nav_contact">संपर्क</a>
+        </div>
+
+        <!-- Header Action & Language Switcher -->
+        <div class="flex items-center gap-3">
+            <!-- Language Switcher Dropdown -->
+            <div class="relative">
+                <select id="languageSelect" onchange="switchLanguage(this.value)" class="bg-gray-100 hover:bg-gray-200 text-brand-950 font-bold px-3 py-2 rounded-xl text-xs sm:text-sm border border-gray-200 focus:outline-none cursor-pointer transition">
+                    <option value="hi">🇮🇳 हिन्दी</option>
+                    <option value="en">🇬🇧 English</option>
+                    <option value="ne">🇳🇵 नेपाली</option>
+                </select>
+            </div>
+
+            <a href="#book" class="bg-brand-900 hover:bg-brand-800 text-white font-semibold px-4 py-2.5 rounded-xl text-sm shadow-md shadow-blue-900/20 transition flex items-center gap-2">
+                <i class="fab fa-whatsapp text-emerald-400 text-base"></i>
+                <span data-i18n="btn_booking">बुकिंग करें</span>
+            </a>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section id="home" class="relative bg-gradient-to-br from-brand-950 via-brand-900 to-slate-900 text-white pt-12 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:16px_16px]"></div>
+
+    <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center relative z-10">
+
+        <!-- Left Column: Copywriting -->
+        <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+            <div class="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-400/20 text-blue-300 px-3.5 py-1.5 rounded-full text-xs font-medium backdrop-blur-sm">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span data-i18n="hero_badge">सीतामढ़ी में नं. 1 लॉजिस्टिक्स व कोल्ड स्टोरेज नेटवर्क</span>
+            </div>
+
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+                <span data-i18n="hero_title_1">सुरक्षित परिवहन एवं</span> <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-amber-200" data-i18n="hero_title_2">आधुनिक कोल्ड-स्टोरेज</span>
+            </h1>
+
+            <p class="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal" data-i18n="hero_desc">
+                सीतामढ़ी, सुरसंड, भिट्ठामोड़ (नेपाल बॉर्डर), रीगा एवं मुजफ्फरपुर रूट पर बी2बी माल ढुलाई, एफएमसीजी और तापमान-नियंत्रित (Cold Chain) स्टोरेज की 100% भरोसेमंद सुविधा।
+            </p>
+
+            <!-- Key Highlights -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-2 max-w-lg mx-auto lg:mx-0 text-left">
+                <div class="bg-white/5 border border-white/10 p-3 rounded-xl backdrop-blur-sm">
+                    <i class="fas fa-temperature-arrow-down text-cyan-400 text-lg mb-1"></i>
+                    <h4 class="text-xs font-bold text-gray-200">Chiller (2°-8°C)</h4>
+                    <p class="text-[11px] text-gray-400" data-i18n="hl_1_sub">डेयरी व सब्जी सुरक्षा</p>
+                </div>
+                <div class="bg-white/5 border border-white/10 p-3 rounded-xl backdrop-blur-sm">
+                    <i class="fas fa-truck-ramp-box text-yellow-400 text-lg mb-1"></i>
+                    <h4 class="text-xs font-bold text-gray-200" data-i18n="hl_2_title">ऑन-डिमांड बेड़ा</h4>
+                    <p class="text-[11px] text-gray-400" data-i18n="hl_2_sub">पिकअप से भारी ट्रक</p>
+                </div>
+                <div class="bg-white/5 border border-white/10 p-3 rounded-xl backdrop-blur-sm col-span-2 sm:col-span-1">
+                    <i class="fas fa-shield-halved text-emerald-400 text-lg mb-1"></i>
+                    <h4 class="text-xs font-bold text-gray-200" data-i18n="hl_3_title">100% सुरक्षित माल</h4>
+                    <p class="text-[11px] text-gray-400" data-i18n="hl_3_sub">लाइव अपडेट्स व ट्रैकिंग</p>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                <a href="#book" class="w-full sm:w-auto bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-7 py-3.5 rounded-xl shadow-lg shadow-emerald-500/25 transition flex items-center justify-center gap-2 text-base">
+                    <i class="fab fa-whatsapp text-xl"></i>
+                    <span data-i18n="btn_wa_hero">व्हाट्सएप से तुरंत बुक करें</span>
+                </a>
+                <a href="#estimator" class="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white font-semibold px-6 py-3.5 rounded-xl border border-white/20 transition text-center text-sm" data-i18n="btn_rate_calc">
+                    भाड़ा दर देखें (Estimate Rate)
+                </a>
+            </div>
+        </div>
+
+        <!-- Right Column: Visual Feature Card -->
+        <div class="lg:col-span-5">
+            <div class="glass-card text-gray-900 rounded-3xl p-6 sm:p-8 shadow-2xl border border-white/20 relative">
+                <div class="absolute -top-4 -right-4 bg-yellow-400 text-brand-950 text-xs font-extrabold px-3 py-1.5 rounded-full shadow-md uppercase tracking-wider" data-i18n="card_tag">
+                    नेपाल सीमा विशेष
+                </div>
+                <h3 class="text-xl font-bold text-brand-950 mb-2" data-i18n="card_title">मुख्य केंद्र सेवाएं (Hub Highlights)</h3>
+                <p class="text-xs text-gray-500 mb-6" data-i18n="card_desc">सीतामढ़ी जिले के सभी मुख्य व्यावसायिक क्षेत्रों में त्वरित सेवा</p>
+
+                <ul class="space-y-4">
+                    <li class="flex items-start gap-3 p-3 rounded-xl bg-blue-50/60 border border-blue-100">
+                        <div class="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">
+                            <i class="fas fa-warehouse"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm text-gray-900" data-i18n="feat_1_title">मॉड्युलर कोल्ड रूम (Warehouse)</h4>
+                            <p class="text-xs text-gray-600" data-i18n="feat_1_desc">दूध, दही, पनीर, मखाना, फल व दवाओं के भंडारण हेतु उपयुक्त。</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3 p-3 rounded-xl bg-emerald-50/60 border border-emerald-100">
+                        <div class="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">
+                            <i class="fas fa-boxes-packing"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm text-gray-900" data-i18n="feat_2_title">कन्स्ट्रक्शन व बल्क लॉजिस्टिक्स</h4>
+                            <p class="text-xs text-gray-600" data-i18n="feat_2_desc">सीमेंट, छड़ (Steel), हार्डवेयर व भारी सामानों का सुरक्षित ट्रांसपोर्ट。</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3 p-3 rounded-xl bg-amber-50/60 border border-amber-100">
+                        <div class="w-8 h-8 rounded-lg bg-amber-600 text-white flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">
+                            <i class="fas fa-route"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm text-gray-900" data-i18n="feat_3_title">भिट्ठामोड़ व बैरगनिया सीमा व्यापार</h4>
+                            <p class="text-xs text-gray-600" data-i18n="feat_3_desc">क्रॉस-बॉर्डर सप्लाई चेन मैनेजमेंट और वेयरहाउसिंग सपोर्ट。</p>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500 font-medium">
+                    <span><i class="fas fa-check-circle text-emerald-500 mr-1"></i> <span data-i18n="card_footer_1">त्वरित सर्विस बुकिंग</span></span>
+                    <span><i class="fas fa-check-circle text-emerald-500 mr-1"></i> <span data-i18n="card_footer_2">नो हिडन चार्जेस</span></span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Services Grid Section -->
+<section id="services" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-blue-600 font-extrabold text-xs uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-full border border-blue-100" data-i18n="serv_badge">हमारी सेवाएं</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-950 mt-3 mb-4" data-i18n="serv_heading">आपकी हर लॉजिस्टिक्स ज़रूरत का समाधान</h2>
+        <p class="text-gray-600 text-base" data-i18n="serv_sub">चाहे ठंडे तापमान में मखाना या डेयरी प्रोडक्ट रखना हो, या भारी निर्माण सामग्री ले जानी हो—हम तैयार हैं。</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Service 1 -->
+        <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all group">
+            <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center text-xl font-bold mb-5 group-hover:bg-blue-600 group-hover:text-white transition">
+                <i class="fas fa-snowflake"></i>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 mb-2" data-i18n="s1_title">कोल्ड स्टोरेज व चिलर रूम</h3>
+            <p class="text-gray-600 text-sm leading-relaxed mb-4" data-i18n="s1_desc">
+                2°C से 8°C का नियंत्रित तापमान। फल, सब्जी, डेयरी उत्पादों और फार्मा दवाओं के लिए उपयुक्त।
+            </p>
+            <a href="#book" class="text-blue-600 text-xs font-bold inline-flex items-center gap-1 hover:gap-2 transition-all"><span data-i18n="book_link">बुक करें</span> <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all group">
+            <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center text-xl font-bold mb-5 group-hover:bg-emerald-600 group-hover:text-white transition">
+                <i class="fas fa-truck-moving"></i>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 mb-2" data-i18n="s2_title">B2B बल्क ट्रांसपोर्ट</h3>
+            <p class="text-gray-600 text-sm leading-relaxed mb-4" data-i18n="s2_desc">
+                सीमेंट, टीएमटी छड़, हार्डवेयर और एफएमसीजी सामानों की जिले भर में त्वरित माल ढुलाई।
+            </p>
+            <a href="#book" class="text-emerald-600 text-xs font-bold inline-flex items-center gap-1 hover:gap-2 transition-all"><span data-i18n="book_link">बुक करें</span> <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all group">
+            <div class="w-12 h-12 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center text-xl font-bold mb-5 group-hover:bg-amber-600 group-hover:text-white transition">
+                <i class="fas fa-wheat-awn"></i>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 mb-2" data-i18n="s3_title">एग्री-लॉजिस्टिक्स (मखाना/अनाज)</h3>
+            <p class="text-gray-600 text-sm leading-relaxed mb-4" data-i18n="s3_desc">
+                सीतामढ़ी व आसपास के एग्री-उत्पादों (मखाना, अनाज, लीची) का सुरक्षित उठाव और मंडी ट्रांसपोर्ट।
+            </p>
+            <a href="#book" class="text-amber-600 text-xs font-bold inline-flex items-center gap-1 hover:gap-2 transition-all"><span data-i18n="book_link">बुक करें</span> <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all group">
+            <div class="w-12 h-12 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center text-xl font-bold mb-5 group-hover:bg-purple-600 group-hover:text-white transition">
+                <i class="fas fa-border-all"></i>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 mb-2" data-i18n="s4_title">सीमापार (Indo-Nepal) ट्रेड</h3>
+            <p class="text-gray-600 text-sm leading-relaxed mb-4" data-i18n="s4_desc">
+                भिट्ठामोड़ व बैरगनिया बॉर्डर के माध्यम से नेपाल जाने/आने वाले कार्गो के लिए विशेष सेवा।
+            </p>
+            <a href="#book" class="text-purple-600 text-xs font-bold inline-flex items-center gap-1 hover:gap-2 transition-all"><span data-i18n="book_link">बुक करें</span> <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+</section>
+
+<!-- Interactive Price Estimator Section -->
+<section id="estimator" class="py-16 bg-blue-900 text-white relative overflow-hidden">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white/10 backdrop-blur-md p-6 sm:p-10 rounded-3xl border border-white/10 shadow-2xl">
+
+            <div class="text-center mb-8">
+                <span class="bg-yellow-400 text-brand-950 font-black text-xs px-3 py-1 rounded-full uppercase tracking-wider" data-i18n="calc_badge">क्विक एस्टीमेट कैलकुलेटर</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold mt-3" data-i18n="calc_title">अनुमानित भाड़ा दर पता करें</h2>
+                <p class="text-blue-200 text-sm mt-1" data-i18n="calc_sub">अपनी ज़रूरत चुनें और अनुमानित लागत देखें</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 mb-8">
+                <!-- Service Type -->
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-blue-200 mb-2" data-i18n="calc_lbl_serv">सेवा चुनिए</label>
+                    <select id="calcService" onchange="calculateEstimate()" class="w-full bg-brand-950 border border-blue-700 text-white rounded-xl p-3 text-sm focus:outline-none focus:border-yellow-400">
+                        <option value="refrig" data-i18n="opt_refrig">रेफ्रिजरेटेड कोल्ड ट्रांसपोर्ट (Reefer)</option>
+                        <option value="dry" data-i18n="opt_dry">सामान्य सूखा कार्गो (General Cargo)</option>
+                        <option value="coldroom" data-i18n="opt_coldroom">कोल्ड रूम स्टोरेज (प्रति क्विंटल/दिन)</option>
+                    </select>
+                </div>
+
+                <!-- Distance / Days -->
+                <div>
+                    <label id="calcParamLabel" class="block text-xs font-bold uppercase tracking-wider text-blue-200 mb-2" data-i18n="calc_lbl_dist">दूरी (Approx KM)</label>
+                    <input type="number" id="calcDistance" value="40" min="1" oninput="calculateEstimate()" class="w-full bg-brand-950 border border-blue-700 text-white rounded-xl p-3 text-sm focus:outline-none focus:border-yellow-400">
+                </div>
+
+                <!-- Weight / Quantity -->
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-blue-200 mb-2" data-i18n="calc_lbl_weight">वजन (टन में / Tonnes)</label>
+                    <input type="number" id="calcWeight" value="2" min="0.5" step="0.5" oninput="calculateEstimate()" class="w-full bg-brand-950 border border-blue-700 text-white rounded-xl p-3 text-sm focus:outline-none focus:border-yellow-400">
+                </div>
+            </div>
+
+            <!-- Result Box -->
+            <div class="bg-brand-950/80 p-6 rounded-2xl border border-blue-500/30 text-center flex flex-col sm:flex-row justify-between items-center gap-4">
+                <div class="text-left">
+                    <span class="text-xs text-gray-400 block" data-i18n="est_label">अनुमानित शुरुआती लागत (Estimated Fare):</span>
+                    <span id="estPrice" class="text-3xl sm:text-4xl font-black text-yellow-400">₹ 2,400</span>
+                    <span class="text-[11px] text-gray-400 block mt-1" data-i18n="est_note">*अंतिम मूल्य माल के प्रकार व सटीक लोकेशन पर आधारित होगा।</span>
+                </div>
+                <a href="#book" class="bg-yellow-500 hover:bg-yellow-400 text-brand-950 font-bold px-6 py-3 rounded-xl text-sm transition shadow-lg w-full sm:w-auto text-center" data-i18n="btn_book_rate">
+                    इस दर पर बुकिंग करें
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Interactive WhatsApp Booking Section -->
+<section id="book" class="py-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
+
+        <!-- Form Header -->
+        <div class="bg-brand-900 text-white p-6 sm:p-8 text-center relative">
+            <div class="inline-flex items-center justify-center w-12 h-12 bg-emerald-500 rounded-2xl text-2xl text-white mb-3 shadow-lg shadow-emerald-500/30">
+                <i class="fab fa-whatsapp"></i>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold" data-i18n="form_heading">ऑनलाइन लॉजिस्टिक्स / कोल्ड रूम बुकिंग</h2>
+            <p class="text-blue-200 text-sm mt-1" data-i18n="form_sub">फॉर्म भरें और 1-क्लिक में हमारे आधिकारिक व्हाट्सएप नंबर पर डायरेक्ट रिक्वेस्ट भेजें</p>
+        </div>
+
+        <!-- Form Body -->
+        <form id="whatsappBookingForm" onsubmit="handleWhatsAppBooking(event)" class="p-6 sm:p-10 space-y-6">
+
+            <div class="grid sm:grid-cols-2 gap-6">
+                <!-- Name -->
+                <div>
+                    <label class="block text-xs font-bold uppercase text-gray-600 mb-2"><span data-i18n="lbl_name">आपका नाम / कंपनी का नाम</span> <span class="text-red-500">*</span></label>
+                    <div class="relative">
+                        <i class="fas fa-user absolute left-4 top-3.5 text-gray-400 text-sm"></i>
+                        <input type="text" id="custName" required placeholder="उदा. रमेश कुमार" class="w-full border border-gray-200 rounded-xl py-3 pl-10 pr-4 text-sm focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600">
+                    </div>
+                </div>
+
+                <!-- Mobile Number -->
+                <div>
+                    <label class="block text-xs font-bold uppercase text-gray-600 mb-2"><span data-i18n="lbl_phone">मोबाइल नंबर (WhatsApp)</span> <span class="text-red-500">*</span></label>
+                    <div class="relative">
+                        <i class="fas fa-phone absolute left-4 top-3.5 text-gray-400 text-sm"></i>
+                        <input type="tel" id="custPhone" required pattern="[0-9]{10}" placeholder="10-अंकों का नंबर" class="w-full border border-gray-200 rounded-xl py-3 pl-10 pr-4 text-sm focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600">
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-6">
+                <!-- Pickup Location -->
+                <div>
+                    <label class="block text-xs font-bold uppercase text-gray-600 mb-2"><span data-i18n="lbl_pickup">पिकअप लोकेशन (Where From)</span> <span class="text-red-500">*</span></label>
+                    <div class="relative">
+                        <i class="fas fa-location-dot absolute left-4 top-3.5 text-red-500 text-sm"></i>
+                        <input type="text" id="pickupLoc" required placeholder="उदा. सीतामढ़ी मंडी / भिट्ठामोड़ / रीगा" class="w-full border border-gray-200 rounded-xl py-3 pl-10 pr-4 text-sm focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600">
+                    </div>
+                </div>
+
+                <!-- Drop Location -->
+                <div>
+                    <label class="block text-xs font-bold uppercase text-gray-600 mb-2"><span data-i18n="lbl_drop">ड्रॉप / डिलीवरी स्थान (Where To)</span> <span class="text-red-500">*</span></label>
+                    <div class="relative">
+                        <i class="fas fa-flag-checkered absolute left-4 top-3.5 text-emerald-500 text-sm"></i>
+                        <input type="text" id="dropLoc" required placeholder="उदा. मुजफ्फरपुर / पटना / नेपाल" class="w-full border border-gray-200 rounded-xl py-3 pl-10 pr-4 text-sm focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600">
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-6">
+                <!-- Service Type -->
+                <div>
+                    <label class="block text-xs font-bold uppercase text-gray-600 mb-2"><span data-i18n="lbl_serv_type">सेवा का प्रकार (Service Type)</span> <span class="text-red-500">*</span></label>
+                    <select id="serviceType" class="w-full border border-gray-200 rounded-xl py-3 px-4 text-sm focus:outline-none focus:border-blue-600 bg-white">
+                        <option value="कोल्ड स्टोरेज (Refrigerated Warehouse)" data-i18n="f_opt_1">कोल्ड स्टोरेज (Refrigerated Warehouse)</option>
+                        <option value="रेफ्रिजरेटेड ट्रांसपोर्ट (Reefer Vehicle)" data-i18n="f_opt_2">रेफ्रिजरेटेड ट्रांसपोर्ट (Reefer Truck)</option>
+                        <option value="एफएमसीजी / किराना (FMCG Cargo)" data-i18n="f_opt_3">एफएमसीजी / किराना सामान</option>
+                        <option value="निर्माण सामग्री (Cement / Steel)" data-i18n="f_opt_4">निर्माण सामग्री (Cement/Steel)</option>
+                        <option value="कृषि उत्पाद (मखाना/अनाज/डेयरी)" data-i18n="f_opt_5">कृषि उत्पाद (मखाना/अनाज/डेयरी)</option>
+                        <option value="अन्य सामान्य कार्गो" data-i18n="f_opt_6">अन्य सामान्य सामान</option>
+                    </select>
+                </div>
+
+                <!-- Weight / Quantity -->
+                <div>
+                    <label class="block text-xs font-bold uppercase text-gray-600 mb-2"><span data-i18n="lbl_qty">मात्रा / वजन (Quantity/Weight)</span> <span class="text-red-500">*</span></label>
+                    <input type="text" id="cargoWeight" required placeholder="उदा. 5 टन / 50 बोरा / 100 पेटी" class="w-full border border-gray-200 rounded-xl py-3 px-4 text-sm focus:outline-none focus:border-blue-600">
+                </div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-6">
+                <!-- Pickup Date -->
+                <div>
+                    <label class="block text-xs font-bold uppercase text-gray-600 mb-2"><span data-i18n="lbl_date">पिकअप तिथि (Pickup Date)</span> <span class="text-red-500">*</span></label>
+                    <input type="date" id="pickupDate" required class="w-full border border-gray-200 rounded-xl py-3 px-4 text-sm focus:outline-none focus:border-blue-600">
+                </div>
+
+                <!-- Remarks / Additional Info -->
+                <div>
+                    <label class="block text-xs font-bold uppercase text-gray-600 mb-2" data-i18n="lbl_remarks">अतिरिक्त विवरण (Optional)</label>
+                    <input type="text" id="remarks" placeholder="उदा. गाड़ी की साइज या टेम्परेचर ज़रूरत" class="w-full border border-gray-200 rounded-xl py-3 px-4 text-sm focus:outline-none focus:border-blue-600">
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="pt-4">
+                <button type="submit" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold py-4 px-6 rounded-2xl shadow-lg shadow-emerald-500/30 transition flex items-center justify-center gap-3 text-base">
+                    <i class="fab fa-whatsapp text-2xl"></i>
+                    <span data-i18n="btn_submit_wa">व्हाट्सएप पर बुकिंग भेजें (Send to WhatsApp)</span>
+                </button>
+                <p class="text-center text-xs text-gray-400 mt-3" data-i18n="form_footer">
+                    <i class="fas fa-lock text-gray-400 mr-1"></i> आपकी जानकारी सुरक्षित है और सीधे हमारे व्हाट्सएप नंबर पर भेजी जाएगी।
+                </p>
+            </div>
+
+        </form>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer id="contact" class="bg-brand-950 text-white pt-16 pb-8 border-t border-blue-900/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-3 gap-10 pb-12 border-b border-gray-800">
+
+        <div>
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-yellow-400 font-bold">
+                    <i class="fas fa-truck-fast"></i>
+                </div>
+                <span class="text-lg font-bold">ExpressLogistics</span>
+            </div>
+            <p class="text-gray-400 text-sm leading-relaxed mb-4" data-i18n="footer_desc">
+                सीतामढ़ी में बी2बी लॉजिस्टिक्स, वेयरहाउसिंग और कोल्ड स्टोरेज सेवाओं के लिए एक विश्वसनीय नाम।
+            </p>
+        </div>
+
+        <div>
+            <h4 class="text-sm font-bold uppercase tracking-wider text-yellow-400 mb-4" data-i18n="f_col2_title">मुख्य स्थान सपोर्ट</h4>
+            <ul class="text-sm text-gray-400 space-y-2">
+                <li data-i18n="f_loc_1"><i class="fas fa-chevron-right text-xs text-blue-500 mr-2"></i> सीतामढ़ी शहर व डुमरा</li>
+                <li data-i18n="f_loc_2"><i class="fas fa-chevron-right text-xs text-blue-500 mr-2"></i> भिट्ठामोड़ इंडो-नेपाल बॉर्डर</li>
+                <li data-i18n="f_loc_3"><i class="fas fa-chevron-right text-xs text-blue-500 mr-2"></i> बैरगनिया व सुरसंड</li>
+                <li data-i18n="f_loc_4"><i class="fas fa-chevron-right text-xs text-blue-500 mr-2"></i> रीगा व मुजफ्फरपुर हाईवे</li>
+            </ul>
+        </div>
+
+        <div>
+            <h4 class="text-sm font-bold uppercase tracking-wider text-yellow-400 mb-4" data-i18n="f_col3_title">संपर्क सूत्र</h4>
+            <div class="text-sm text-gray-400 space-y-3">
+                <p data-i18n="f_address"><i class="fas fa-location-dot text-red-400 mr-2"></i> मेन रोड, बरियारपुर / डुमरा, सीतामढ़ी, बिहार - 843302</p>
+                <p><i class="fas fa-phone text-emerald-400 mr-2"></i> +91 94655 95811 / +91 88378 62524</p>
+                <p><i class="fas fa-envelope text-blue-400 mr-2"></i> booking@sitamarhilogistics.com</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 pt-6 text-center text-xs text-gray-500" data-i18n="copyright">
+        © 2026 Express Logistics & Cold Chain Solutions. सर्वाधिकार सुरक्षित।
+    </div>
+</footer>
+
+<!-- Success Confirmation Modal -->
+<div id="successModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-sm w-full text-center shadow-2xl space-y-4">
+        <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-3xl mx-auto">
+            <i class="fas fa-check"></i>
+        </div>
+        <h3 class="text-xl font-bold text-gray-900" data-i18n="modal_title">व्हाट्सएप पर रीडायरेक्ट किया जा रहा है!</h3>
+        <p class="text-xs text-gray-600" data-i18n="modal_desc">
+            आपकी बुकिंग जानकारी तैयार हो गई है। व्हाट्सएप खुलते ही 'Send' बटन दबाएं।
+        </p>
+        <button onclick="closeModal()" class="w-full bg-brand-900 text-white font-bold py-3 rounded-xl text-sm" data-i18n="modal_btn">
+            ठीक है (OK)
+        </button>
+    </div>
+</div>
+
+<!-- External JavaScript Link -->
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
