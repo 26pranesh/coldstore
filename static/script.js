@@ -309,7 +309,7 @@ async function handleWhatsAppBooking(event) {
 
     try {
         // 1. Send data to your backend server to store in the database
-        const response = await fetch('http://localhost:5000/api/bookings', {
+        const response = await fetch('/api/bookings', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
