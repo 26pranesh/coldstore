@@ -1,4 +1,6 @@
 import os
+import ssl
+
 from flask import Flask, render_template, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
@@ -16,9 +18,19 @@ DB_NAME = os.getenv("MYSQL_DB", "defaultdb")
 
 # 2. Explicitly set SQLALCHEMY_DATABASE_URI using PyMySQL driver format with SSL
 app.config['SQLALCHEMY_DATABASE_URI'] = (
-    f"mysql+pymysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
-    f"?ssl_mode=REQUIRED"
-)
+    f"mysql+pymysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}")
+
+# Pass PyMySQL SSL connection arguments safely through SQLAlchemy connect_args
+context = ssl.create_default_context()
+context.check_hostname = False
+context.verify_mode = ssl.CERT_NONE
+
+app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
+    "connect_args": {
+        "ssl": context
+    }
+}
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # 3. Initialize SQLAlchemy
