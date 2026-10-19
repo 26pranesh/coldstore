@@ -84,6 +84,19 @@ def create_booking():
         return jsonify({"status": "error", "message": str(e)}), 500
 
 if __name__ == '__main__':
+    # This block runs when running locally via python app.py
     with app.app_context():
         db.create_all()
+        print("Database tables checked/created successfully!")
     app.run(debug=True, port=5000)
+
+else:
+    # THIS IS CRITICAL FOR RENDER:
+    # When Gunicorn runs your app on Render ('gunicorn app:app'),
+    # it uses this block to automatically create tables on startup!
+    with app.app_context():
+        try:
+            db.create_all()
+            print("Render startup: Database tables checked/created successfully!")
+        except Exception as e:
+            print(f"Render startup table creation note: {e}")
